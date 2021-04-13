@@ -60,7 +60,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="CmbValaszt" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="9" max="32767" attributes="0"/>
-              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+              <Component id="CbHirlevel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -71,7 +71,7 @@
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CmbValaszt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CbHirlevel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="44" max="32767" attributes="0"/>
@@ -80,21 +80,22 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+    <Component class="javax.swing.JCheckBox" name="CbHirlevel">
       <Properties>
         <Property name="text" type="java.lang.String" value="H&#xed;rlev&#xe9;l"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CbHirlevelActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="CmbValaszt">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Szoftverfejleszt&#x151;"/>
-            <StringItem index="1" value="Rendszergazda"/>
-            <StringItem index="2" value="Grafikus"/>
+          <StringArray count="4">
+            <StringItem index="0" value="-szakok-"/>
+            <StringItem index="1" value="Szoftverfejleszt&#x151;"/>
+            <StringItem index="2" value="Rendszergazda"/>
+            <StringItem index="3" value="Grafikus"/>
           </StringArray>
         </Property>
       </Properties>

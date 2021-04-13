@@ -5,6 +5,12 @@
  */
 package viszgafeladatgyakorlas;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Varga Balázs
@@ -27,7 +33,7 @@ public class View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCheckBox1 = new javax.swing.JCheckBox();
+        CbHirlevel = new javax.swing.JCheckBox();
         CmbValaszt = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -38,14 +44,14 @@ public class View extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gyakorlás");
 
-        jCheckBox1.setText("Hírlevél");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        CbHirlevel.setText("Hírlevél");
+        CbHirlevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                CbHirlevelActionPerformed(evt);
             }
         });
 
-        CmbValaszt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Szoftverfejlesztő", "Rendszergazda", "Grafikus" }));
+        CmbValaszt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-szakok-", "Szoftverfejlesztő", "Rendszergazda", "Grafikus" }));
         CmbValaszt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CmbValasztActionPerformed(evt);
@@ -86,7 +92,7 @@ public class View extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CmbValaszt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jCheckBox1)
+                .addComponent(CbHirlevel)
                 .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
@@ -95,7 +101,7 @@ public class View extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CmbValaszt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1)
+                    .addComponent(CbHirlevel)
                     .addComponent(jLabel1))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
@@ -103,12 +109,26 @@ public class View extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void CbHirlevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbHirlevelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_CbHirlevelActionPerformed
 
     private void MiKimentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiKimentesActionPerformed
-        // TODO add your handling code here:
+         try {
+        String valasztotSzak=CmbValaszt.getSelectedItem().toString();
+        String hirlevel = "";
+        if (CbHirlevel.isSelected()==true) {
+            hirlevel="kért hírlevelet";
+        }else{
+            hirlevel="nem kért hírlevelet";
+        }
+        String osszesFuz="Választotszak: "+valasztotSzak + " Kért e hírlevelet: "+hirlevel;
+            
+            Files.write(Paths.get("mentes.txt"),osszesFuz.getBytes());
+        } catch (IOException ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_MiKimentesActionPerformed
 
     private void MiBeolvasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiBeolvasActionPerformed
@@ -155,10 +175,10 @@ public class View extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CbHirlevel;
     private javax.swing.JComboBox<String> CmbValaszt;
     private javax.swing.JMenuItem MiBeolvas;
     private javax.swing.JMenuItem MiKimentes;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
