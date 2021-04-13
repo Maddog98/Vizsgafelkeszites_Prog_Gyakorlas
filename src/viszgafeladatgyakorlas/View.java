@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -114,21 +115,26 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_CbHirlevelActionPerformed
 
     private void MiKimentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiKimentesActionPerformed
-         try {
-        String valasztotSzak=CmbValaszt.getSelectedItem().toString();
-        String hirlevel = "";
-        if (CbHirlevel.isSelected()==true) {
-            hirlevel="kért hírlevelet";
-        }else{
-            hirlevel="nem kért hírlevelet";
-        }
-        String osszesFuz="Választotszak: "+valasztotSzak + " Kért e hírlevelet: "+hirlevel;
-            
-            Files.write(Paths.get("mentes.txt"),osszesFuz.getBytes());
+        try {
+            String valasztotSzak = CmbValaszt.getSelectedItem().toString();
+            String hirlevel = "";
+            if (CbHirlevel.isSelected() == true) {
+                hirlevel = "kért hírlevelet";
+            } else {
+                hirlevel = "nem kért hírlevelet";
+            }
+            String osszesFuz = "Választotszak: " + valasztotSzak + " Kért e hírlevelet: " + hirlevel;
+
+            if (CmbValaszt.getSelectedIndex()==0) {
+                JOptionPane.showMessageDialog(this, "Kérem elötte válaszon egy szakot mielött mentene!","HIBA",JOptionPane.ERROR_MESSAGE);
+            }else{
+                Files.write(Paths.get("mentes.txt"), osszesFuz.getBytes());
+            }
+
         } catch (IOException ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_MiKimentesActionPerformed
 
     private void MiBeolvasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiBeolvasActionPerformed
